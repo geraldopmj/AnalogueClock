@@ -1,0 +1,11 @@
+body{
+    background-color: rgb(255, 246, 222);
+}
+
+#canvas{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto; /* center object */
+    margin-right: auto; /* center object */
+    display: block; /* necessary to center object */
+}
