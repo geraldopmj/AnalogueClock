@@ -34,7 +34,7 @@ function drawFace(ctx, radius) {
 function drawNumbers(ctx, radius) {
     var ang;
     var num;
-    ctx.font = radius*0.18 + "px arial" /* Set font and size */
+    ctx.font = radius*0.18 + "px Times New Roman" /* Set font and size */
     ctx.textBaseline= "middle" /* align baseline */
     ctx.textAlign= "center"/* align to center */
     for(num = 1; num<13; num++){ /* Calculating the location of the numbers */
