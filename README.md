@@ -16,4 +16,4 @@ geraldo.pmj@gmail.com
 
 ## Preview
 
-![preview](./preview/preview.png)
+![preview](./preview.png)
