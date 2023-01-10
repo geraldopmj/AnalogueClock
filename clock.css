@@ -3,7 +3,8 @@ body{
 }
 
 #canvas{
-    height: 90vh;
+    max-width: 90vw;
+    max-height: 90vh;
     padding-left: 0;
     padding-right: 0;
     margin-left: auto; /* center object */
