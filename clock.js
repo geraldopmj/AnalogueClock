@@ -1,18 +1,16 @@
-var canvas = document.getElementById("canvas"); /*pega o canvas do html*/
-var ctx = canvas.getContext("2d"); /* cria um objeto de desenho 2d */
-var radius = canvas.height / 2; /*usar height para o relógio funfar em qualquer canvas height */
+var canvas = document.getElementById("canvas"); /*canvas from html*/
+var ctx = canvas.getContext("2d"); /* create object 2d */
+var radius = canvas.height / 2; /*uses height so the clock work on any canvas height */
 ctx.translate(radius, radius); /*remap the drawing position to the center of canvas (centered when radius was declared) */
-radius = radius* 0.8;/* draw clock only to 90% of canvas size */
-//drawClock(ctx,radius)
-setInterval(drawClock,100);
+radius = radius* 0.8;/* draw clock only to 80% of canvas size */
+
+setInterval(drawClock,100);// method that calls a function at specified intervals in ms
 
 function drawClock() {
-    drawFace(ctx, radius) /* call function to draw clock back */
-    drawNumbers(ctx,radius); /* call function to draw numbers */
-    drawTime(ctx, radius); /* call function to draw clock pointers */
+    drawAClock(ctx, radius) /* call function to draw clock back */
 }
 
-function drawFace(ctx, radius) {
+function drawAClock(ctx, radius) {
     var grad;
     ctx.beginPath(); /* ctx draw white circle for the face*/
     ctx.arc(0, 0, radius, 0, 2*Math.PI); /*Draws a circle */
@@ -26,30 +24,26 @@ function drawFace(ctx, radius) {
     ctx.lineWidth = radius*0.1; /*defining the line width the drawings object*/
     ctx.stroke(); /*calling method to draw*/
     ctx.beginPath(); /* begin drawing*/
-    ctx.arc(0,0, radius*0.1, 0, 2*Math.PI);
     ctx.fillStyle = 'black';
     ctx.fill();
-}
 
-function drawNumbers(ctx, radius) {
+     //Numbers:
     var ang;
     var num;
-    ctx.font = radius*0.18 + "px Times New Roman" /* Set font and size */
+    ctx.font = radius*0.18 + "px arial" /* Set font and size */
     ctx.textBaseline= "middle" /* align baseline */
     ctx.textAlign= "center"/* align to center */
     for(num = 1; num<13; num++){ /* Calculating the location of the numbers */
         ang = num*Math.PI /6; 
         ctx.rotate(ang); /* rotating */
-        ctx.translate(0, -radius*0.85); /* translate = remap x and y */
+        ctx.translate(0, -radius*0.80   ); /* translate = remap x and y */
         ctx.rotate(-ang);
         ctx.fillText(num.toString(), 0, 0); /* putting text and converting to string */
         ctx.rotate(ang);
-        ctx.translate(0, radius*0.85)
+        ctx.translate(0, radius*0.80)
         ctx.rotate(-ang);
     }
-}
 
-function drawTime(ctx, radius) {
     var now = new Date(); /* current date */
     var hour = now.getHours(); /* hour */
     var minute = now.getMinutes(); /* minutes */
@@ -62,19 +56,27 @@ function drawTime(ctx, radius) {
     second = (second*Math.PI/30);
    
     //Pointers drawing:
-    drawHand(ctx, minute, radius*0.7, radius*0.06); 
-    drawHand(ctx, hour, radius*0.45, radius*0.06);
-    drawHand(ctx, second, radius*0.8, radius*0.02);
+    drawHand(ctx, minute, radius*0.7, radius*0.06, "gray"); 
+    drawHand(ctx, hour, radius*0.45, radius*0.06, "gray");
+    drawHand(ctx, second, radius*0.8, radius*0.02, "red");
+
+    //Circle hold hands drawing:
+    ctx.stroke(); /*calling method to draw*/
+    ctx.beginPath(); /* begin drawing*/
+    ctx.arc(0,0, radius*0.1, 0, 2*Math.PI);/*drawing circle "holds" hands*/
+    ctx.fillStyle = 'black';
+    ctx.fill();
 }
 
-function drawHand(ctx, pos, length, width){
+    //Pointers function:
+function drawHand(ctx, pos, length, width, color){
     ctx.beginPath();
     ctx.lineWidth = width;
     ctx.lineCap = "round";
     ctx.moveTo(0,0);    
     ctx.rotate(pos);
     ctx.lineTo(0, -length);
-    ctx.strokeStyle = "black"
+    ctx.strokeStyle = color;
     ctx.stroke();
     ctx.rotate(-pos);
 }
