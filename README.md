@@ -1,7 +1,7 @@
 # AnalogueClock
 Repository for an analogue clock made with JavaScript!
 
-[Link para acessar](https://geraldopmj.github.io/AnalogueClock/)
+[Visualize](https://geraldopmj.github.io/AnalogueClock/)
 
 # Technology used:
 
