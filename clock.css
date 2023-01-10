@@ -1,13 +1,15 @@
-body{
+html, body{
     background-color: rgb(255, 246, 222);
+    height: 100%;
+    width:100%;
+    margin: 0;
 }
 
 #canvas{
-    max-width: 90vw;
-    max-height: 90vh;
-    padding-left: 0;
-    padding-right: 0;
+    max-width: 100%;
+    max-height: 100%;
     margin-left: auto; /* center object */
     margin-right: auto; /* center object */
-    display: block; /* necessary to center object */
+    display: flex;
+    justify-content: center;
 }
